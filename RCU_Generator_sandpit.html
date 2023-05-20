@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Recommend Unit</title>
+	<style>
+		th:first-child,
+		td:first-child {
+		width: 100px;
+		}
+		th:nth-child(2),
+		td:nth-child(2) {
+		width: 80px;
+		}
+		th:nth-child(3),
+		td:nth-child(3) {
+		width: 140px;
+		}
+		th:nth-child(4),
+		td:nth-child(4) {
+		width: 80px;
+		}
+        .button {
+        font-size: 24px;
+        padding: 12px 24px;
+        }
+		table {
+		border-collapse: collapse;
+		text-align: center;
+		color: blue;
+		}
+		th,
+		td {
+		padding: 10px;
+		border: 1px solid black;
+		}
+	    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: Sans-Serif;
+      }
+	</style>
+</head>
+<body>
+	<!-- Event Details -->
+	<h4 id="randomSuburb"></h4>
+	<h4 id="randomNumber" + id=randomTag></h4>
+	<h4 id="randomTag"></h4>
+	<p> </p>
+    <p> </p>
+    <hr>
+
+	<!-- RCU Table -->
+	<table id="unitTable">
+		<thead>
+			<tr>
+				<th><FONT COLOR=black>Unit</th>
+				<th><FONT COLOR=black>Type</th>
+				<th><FONT COLOR=black>DW</th>
+				<th><FONT COLOR=black>Status</th>
+				<th><FONT COLOR=black>Distance</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>    
+	</table>
+	
+
+	<!-- PRINT A RANDOMISED GRID -->
+	<p id="randomGrid"> </p>
+    <hr>
+	<!-- BUTTONS -->
+    <button onclick="generateTable()" style="display: inline-block; margin-right: 20px;">NEW EVENT</button>
+    <button onclick="refDmESO()">ESO</button>
+    <button onclick="refDmNNU()">NNU</button>
+    <button onclick="clearAll()">Clear Remarks</button>
+    <p></p>
+    <!-- REMARKS -->
+    <select id="comment-select" onchange=addComment()>
+      <option value="">Remarks...</option>
+      <option value="==REFER TO DM - CLOSER CAR PRI 0==">==REFER TO DM - CLOSER CAR PRI 0==</option>
+      <option value="==REFER TO DM - >20km==">==REFER TO DM - >20km==</option>
+      <option value="==REFER TO DM FOR BACKUP SOLUTION==">==REFER TO DM FOR BACKUP SOLUTION==</option>
+    </select>
+    <ul id="comment-list"></ul>
+<hr>
+	<p> </p>
+	<!-- CSV Unit Uploader front end -->
+    <p>Upload new unit list:</p>
+	<input type="file" id="csv-input" onchange="handleCSVFile()"/>
+	<p>Please report any issues/Requests to Marcus - Happy Studying :)</p>
+	
+<!-- MAIN SCRIPTING TO RUN FUCTIONS -->
+	<script>
+		// Event Listening: Detects key to regenerate RCU string
+		document.addEventListener("keydown", function(event) {
+			// check if Enter key is pressed
+			if (event.key === "Enter") {
+				// trigger click event on button
+				generateTable();
+			}
+		});
+		
+		// CSV Import Function to import a new unit list
+	    function handleCSVFile() {
+            const file = document.getElementById('csv-input').files[0];
+            const reader = new FileReader();
+            reader.readAsText(file);
+            reader.onload = function() {
+            const contents = reader.result;
+            const lines = contents.split('\n');
+            const newUnits = lines.map(line => line.trim());
+            units = newUnits;
+            generate();
+            }
+        }
+
+        //Canned Comment Remarks
+	    function addComment() {
+            var comment = document.getElementById("comment-select").value;
+            var node = document.createElement("LI");
+            var textnode = document.createTextNode(comment);
+            node.appendChild(textnode);
+            document.getElementById("comment-list").appendChild(node);
+            document.getElementById("comment-select").selectedIndex = 0;
+        }
+        
+        function refDmESO(){
+            var comment = "ESO Button Hit";
+            var node = document.createElement("LI");
+            var textnode = document.createTextNode(comment);
+            node.appendChild(textnode);
+            document.getElementById("comment-list").appendChild(node);
+            document.getElementById("comment-select").selectedIndex = 0;
+	    }
+	    
+        function refDmNNU(){
+            var comment = "NO NEARBY UNITS FOR THIS EVENT";
+            var node = document.createElement("LI");
+            var textnode = document.createTextNode(comment);
+            node.appendChild(textnode);
+            document.getElementById("comment-list").appendChild(node);
+            document.getElementById("comment-select").selectedIndex = 0;
+	    }
+        
+        
+        //Clear Remarks
+        function clearAll() {
+            document.getElementById("comment-list").innerHTML = "";
+        }
+	    // list of units
+		var units = ["Z26","WF","ZR28","ZR29","ZR5","CA","CG","OR","BU","DO","RC730","RC731","RC732","RC733","RC734","RC735","RC736","RC737","RC738","RC739","TS","WW","AR702","CK","EM","FWDE","BO","DT","FG","GI","HL","BD","CT","HE","CW","HW","KW","WR","KX","SC","WH","CC","LY","MY","AR107","MK","MT","OL","DC","MJ","NU","CY","RI","Z8","Z32","LF","MG","RV","BV","BH","FH","VS","BW","AW","GH","SY","WA","BL","WN","ZR2","GD","LG","MV","YJ","AL","NE","YV","ZR9","BM","DL","PW","FWDB","BK","DLHY","BR","GL","GR","MD","OP","CV","FO","MB","HS","KJ","TLHL","Z24","BF","ME","RK","AR110","EN","MP","Z30","BUDE","EX","CS","Z13","KE","KR","SA","TL","DR","GA","JC","SH","SU","AN","BB","KN","SS","ZR3","ZR31","HC","MS","SEBK","TN","SUPT503","Z23","EY","TR","WE","WV","AR109","LV","PC","STLK","AR108","AR105","KP","MH","ML","RC130","RC131","RC132","RC133","RC134","RC135","RC136","RC137","RC138","RC139","SE","SH","TK","Z34","SH","Z15","AR103","CN","CQ","DY","EV009","DX","KO","YMBT","EL","MMCY","RS","Z25","AR111","AR112","ZR21","EP","MR","RC101","RC106","SG","WK","CP","DS","FK","EV007","HD","JCNA","ZR1","ZR22","KL","RTK","HV","MZ","RVRL","WO","AR102","GW","MB","RC111","RC112","RC113","RC114","RC115","RC116","RC117","RC118","RC119","MDSN","TO","ZR4","RC701","RC105","RC107","RC108","RC109","RC110","DE","DN","RC120","RC121","RC122","RC123","RC124","RC125","RC126","RC127","RC128","RC129","AR104","EK","GDPK","AP","FF","NO","SD","TH","GB","NT","PR","RE","IV","KB","RR","AB","KG","PN","RM","CO","RC102","RC103","RP","Z14","RH","TT","MTAV1","WS","LLOR","WT","YY","AR704","AR703","AR701","MATS1251","MATS1252","MATS","MATS1851","MATS1853","MATS1855","MATS1852","MATS1651","MATS1652","MATS1653","MATS1654"];
+
+        //Generates table
+		function generateTable() {
+		var RCUNumber = 10;
+		
+		// Generate the random dispatch Number, Suburb, EvType, Grid
+        var numberElem = document.querySelector("#randomNumber");
+        var suburbElem = document.querySelector("#randomSuburb");
+        var tagElem = document.querySelector("#randomTag");
+        var gridElem = document.querySelector("#randomGrid");
+
+        // Generate a random Event number
+        var randomNumber = Math.floor(Math.random() * 2000) + 10001;
+
+        // Array of suburbs
+        var suburbs = ["Abbotsford", "Brunswick", "Carlton", "Collingwood", "Fitzroy", "Northcote", "Prahran", "Richmond", "South Yarra", "St Kilda"];
+        // get a random suburb from the array
+        var randomSuburb = suburbs[Math.floor(Math.random() * suburbs.length)];
+        // display the random suburb
+        suburbElem.textContent = "Event Location: 123 Fake St, " + randomSuburb;
+
+        // array of EvTypes
+        var tags = ["*Event Type Descriptor*"];
+        // get a random type from the array
+        var randomTag = tags[Math.floor(Math.random() * tags.length)];
+        // display the random tag
+        tagElem.textContent = "Event Number: E232204" + randomNumber + "  |  Event Type: " + randomTag;
+        // array of GRIDS
+        var avGrids = ["MC*/PR*1,AP/PR1:AP1,MC*/PR*1", "AP1,MC/PR2:MC1,AP2", "AP/PR1,NO:MC1,AP2", "ARU2,NO:AP/PR2,NO", "AP/PR3,NO:ARU3,AP/PR3"];
+        // get a random tag from the array
+        var randomGrid = avGrids[Math.floor(Math.random() * avGrids.length)];
+        // display the random tag
+        gridElem.textContent = "Grid: " + randomGrid;
+
+
+			// shuffle the units array
+			units = shuffle(units);
+			// create a new row for each unit and add it to the table body
+			var tableBody = document.querySelector("#unitTable tbody");
+			tableBody.innerHTML = "";
+			var rows = [];
+			
+			for (var i = 0; i < RCUNumber-1; i++) {
+				var row = document.createElement("tr");
+				var unitCell = document.createElement("td");
+				// Set unit name
+				unitCell.textContent = units[i];
+				
+				var typeCell = document.createElement("td");
+				if (units[i].startsWith("Z")) {
+					typeCell.textContent = "MICA";
+				} else if (units[i].startsWith("AR")) {
+					typeCell.textContent = "ARU";
+				} else if (units[i].startsWith("MATS")) {
+					typeCell.textContent = "MATS";
+				} else {
+					typeCell.textContent = "AGP";
+				}
+				var dwCell = document.createElement("td");
+				var dws = ["CODE 1", "PRI 0", "  ","  ","NO STRETCHER", "S/O", "1700/1900 CODE 1", "PRI 0 CB","  "];
+				dwCell.textContent = dws[Math.floor(Math.random() * dws.length)];
+				var stCell = document.createElement("td");
+				var sts = ["AM", "AS"];
+				stCell.textContent = sts[Math.floor(Math.random() * sts.length)];
+				var distanceCell = document.createElement("td");
+				var distance = (Math.random() * 29 + 1).toFixed(1);
+				distanceCell.textContent = distance + " km";
+				row.appendChild(unitCell);
+				row.appendChild(typeCell);
+				row.appendChild(dwCell);
+				row.appendChild(stCell)
+				row.appendChild(distanceCell);
+				rows.push(row);
+				clearAll()
+				//clearRemarks();
+			}
+			// sort rows by distance
+			rows.sort(function(a, b) {
+				var aDistance = parseFloat(a.cells[4].textContent);
+				var bDistance = parseFloat(b.cells[4].textContent);
+				return aDistance - bDistance;
+			});
+			
+			 // add MICA unit to 10th row
+            var micaRow = document.createElement("tr");
+            var micaUnitCell = document.createElement("td");
+            
+            var micaUnits = ["ZR1","ZR2","ZR3","ZR4","ZR5","Z6","ZR7","Z8","ZR9","ZR10","Z11","Z12","Z13","Z14","Z15","Z16","ZR17","ZR18","ZR19","ZR20","ZR21","ZR22","Z23","Z24","Z25","Z26"];
+            micaUnitCell.textContent = micaUnits[Math.floor(Math.random() * micaUnits.length)];
+            var micaTypeCell = document.createElement("td");
+            micaTypeCell.textContent = "MICA";
+            var micaDwCell = document.createElement("td");
+            micaDwCell.textContent = dws[Math.floor(Math.random() * dws.length)];
+            var micaStCell = document.createElement("td");
+            micaStCell.textContent = "AM";
+            
+            var micaDistanceCell = document.createElement("td");
+            micaDistanceCell.textContent = (Math.random() * 7 + 29).toFixed(1) + " km";
+            micaRow.appendChild(micaUnitCell);
+            micaRow.appendChild(micaTypeCell);
+            micaRow.appendChild(micaDwCell);
+            micaRow.appendChild(micaStCell);
+              
+            micaRow.appendChild(micaDistanceCell);
+            rows.splice(9, 0, micaRow);
+
+			
+			// append sorted rows to table body
+			for (var i = 0; i < rows.length; i++) {
+				tableBody.appendChild(rows[i]);
+			}
+			
+		}
+		
+		
+
+		function shuffle(array) {
+			// Fisher-Yates shuffle algorithm
+			for (var i = array.length - 1; i > 0; i--) {
+				var j = Math.floor(Math.random() * (i + 1));
+				var temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+			}
+			return array;
+		}
+
+	</script>
+</body>
+</html>

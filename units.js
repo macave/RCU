@@ -12,6 +12,7 @@ const DW_COMPLEX_OPTIONS = [
 
 const STATUS_OPTIONS = ["AM", "AS", "ER", "E2", "AR", "DP", "LD", "AD"];
 
+
 function generateUnits() {
   const units_dup = [...UNIT_DATA];
   const generated_units = [];
@@ -33,7 +34,7 @@ function generateUnits() {
 
     if (complexDW == true) {
       base_unit.dw = base_unit.dw + " " +
-      (Math.random() > 0.5 ? DW_COMPLEX_OPTIONS[Math.floor(Math.random() * DW_COMPLEX_OPTIONS.length)]: "");
+        (Math.random() > 0.5 ? DW_COMPLEX_OPTIONS[Math.floor(Math.random() * DW_COMPLEX_OPTIONS.length)] : "");
     }
 
     base_unit.status =

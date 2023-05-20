@@ -20,7 +20,7 @@ const RENDERERS = {
   }
 };
 
-function resetFilter() {
+function resetFilter() {  
   document.getElementById("all").checked = false;
   document.getElementById("available").checked = true;
   filter = "available";

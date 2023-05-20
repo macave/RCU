@@ -32,6 +32,7 @@ th,
 td {
   padding: 10px;
   border: 1px solid black;
+  font-weight: bold;
 }
 
 ul {
@@ -54,11 +55,11 @@ body {
 }
 
 .ER {
-  color: purple;
+  color: rgb(100, 0, 100);
 }
 
 .E2 {
-  color: hotpink;
+  color: rgb(255, 33, 203);
 }
 
 .DP {
@@ -66,7 +67,7 @@ body {
 }
 
 .LD {
-  color: orange;
+  color: rgb(255, 123, 0);
 }
 
 .AD {

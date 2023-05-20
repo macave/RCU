@@ -29,6 +29,7 @@ function handleFilterChange(e) {
 function render() {
   document.querySelector("#randomGrid").textContent = window.grid.grid;
   document.querySelector("#randomEventType").textContent = window.grid.evtype;
+  document.querySelector("#randomEventDescriptor").textContent = window.grid.evdescriptor;
 
   const tbody = document.querySelector("#unit-table-body");
 
@@ -48,7 +49,7 @@ function render() {
   limited_units.map((unit) => {
     const row = document.createElement("tr");
     Object.keys(unit)
-      .filter((key) => key !== "d_group")
+      .filter((key) => key !== "d_group") 
       .forEach((key) => {
         const cell = document.createElement("td");
 

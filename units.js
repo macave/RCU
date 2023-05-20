@@ -18,7 +18,7 @@ function generateUnits() {
   const generated_units = [];
 
   let fleet_availability = document.getElementById("fleetAvailability").value;
-  let complexDW = document.getElementById("useComplexDW").checked;
+  let complexDW = document.getElementById("useComplexDW").value;
   console.log(complexDW);
 
   for (let index = 0; index < UNIT_COUNT; index++) {
@@ -32,7 +32,7 @@ function generateUnits() {
         ? DW_OPTIONS[Math.floor(Math.random() * DW_OPTIONS.length)]
         : "";
 
-    if (complexDW == true) {
+    if (complexDW == 1) {
       base_unit.dw = base_unit.dw + " " +
         (Math.random() > 0.5 ? DW_COMPLEX_OPTIONS[Math.floor(Math.random() * DW_COMPLEX_OPTIONS.length)] : "");
     }

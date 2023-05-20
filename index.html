@@ -32,6 +32,7 @@
 			e.addEventListener("change", (event) => handleFilterChange(event))
 			initTool()
 		})
+		document.getElementById("evRemarks").style.display = "none";
 	}
 	//Event Listener 'ENTER'
 	document.addEventListener("keydown", function (event) {
@@ -48,7 +49,7 @@
 		<div class="row pt-4">
 			<div class="col border border-2 border-opacity-50 border-black">
 
-				<div class="d-flex">
+				<div class="d-flex mt-2">
 					<p>Event Location:</p>
 					<p class="ms-3 fw-bold">123 Street, Suburb</p>
 				</div>
@@ -59,7 +60,7 @@
 					<p class="ms-3">Event Type:</p>
 					<p id="randomEventType" class="ms-1 fw-bold"></p>
 				</div>
-				<p id="randomEventDescriptor" class="border border-black">Event Type Descriptor</p>
+				<p id="randomEventDescriptor" class="ps-2 border border-black">Event Type Descriptor</p>
 				<div class="d-flex pb-2" id="filter-controls">
 					<span class="me-3">Other Options:</span>
 					<div style="padding-right: 10px; margin-right: 10px; border-right: 1px solid black;">
@@ -71,26 +72,14 @@
 						<label for="all">Use All Units</label>
 					</div>
 				</div>
-
-				<!-- RCU Table -->
 				<table id="unitTable" class="table table-bordered border border-black">
 					<thead>
 						<tr>
-							<th>
-								<FONT COLOR=black>Unit
-							</th>
-							<th>
-								<FONT COLOR=black>Type
-							</th>
-							<th>
-								<FONT COLOR=black>DW
-							</th>
-							<th>
-								<FONT COLOR=black>Status
-							</th>
-							<th>
-								<FONT COLOR=black>Distance
-							</th>
+							<th style="width 20%">Unit</th>
+							<th style="width:15%">Type</th>
+							<th style="width:40%">DW</th>
+							<th style="width:15%">Status</th>
+							<th style="width:10%">Distance</th>	
 						</tr>
 					</thead>
 					<tbody id="unit-table-body">
@@ -102,7 +91,7 @@
 					<p id="randomGrid"></p>
 				</div>
 			</div>
-			<div class="ms-2 col border border-2 border-opacity-50 border-black">
+			<div id="evRemarks" class="ms-2 col border border-2 border-opacity-50 border-black">
 				<div class="d-flex justify-content-center">
 					<button onclick="refDmNNU()" style="width: 100px" class="ms-1 me-1 mt-1 mb-1">NNU</button>
 					<button onclick="refDmESO()" style="width: 100px" class="ms-1 me-1 mt-1 mb-1">ESO</button>
@@ -127,21 +116,19 @@
 				<button onclick="initTool()" style="width:20%" class="btn btn-info">NEW EVENT</button>
 			</div>
 
-			<div class="row d-flex justify-content-center">
-
-				<select id="fleetAvailability" style="width:10%;" class="form-select form-select-sm me-2">
+			<div class="row d-flex flex-row justify-content-center">
+				<select id="fleetAvailability" style="width:10%; background-color: #abddff;" class="form-select form-select-sm">
 					<option value="1" selected>Fleet Availability</option>
 					<option value="0.6">60% Fleet</option>
 					<option value="0.2">20% Fleet</option>
 					<option value="0.05">5% Fleet</option>
 				</select>
-
-				<select id="useComplexDW" style="width: 10%" class="form-select form-select-sm ms-2">
+				<select id="useComplexDW" style="width: 10%; background-color: #abddff;" class="form-select form-select-sm ms-2">
 					<option value="0" selected>Simple DW</option>
 					<option value="1">Complex DW</option>
 				</select>
-
-			</div>
+				<button onclick="toggleEvRemarks()" class="btn btn-sm ms-2" style="width: 10%; background-color: #abddff;">Toggle Remarks</button>	
+			</div>	
 			<div class="row">
 				<p class="text-center">Please report any issues/Requests to Marcus - Happy Studying :)</p>
 			</div>

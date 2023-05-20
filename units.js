@@ -1,4 +1,4 @@
-const UNIT_COUNT = 150;
+const UNIT_COUNT = 300;
 
 const DW_OPTIONS = [
   "CODE 1",

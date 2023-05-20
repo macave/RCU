@@ -12,6 +12,12 @@ const RENDERERS = {
     cell.innerText = unit.distance.toFixed(1) + " km";
     row.appendChild(cell);
   },
+  dw: (unit, row) => {
+    const cell = document.createElement("td");
+    cell.innerText = unit.dw;
+    cell.classList.add("text-nowrap");
+    row.appendChild(cell);
+  }
 };
 
 function handleFilterChange(e) {
@@ -21,7 +27,8 @@ function handleFilterChange(e) {
 }
 
 function render() {
-  document.querySelector("#randomGrid").textContent = window.grid;
+  document.querySelector("#randomGrid").textContent = window.grid.grid;
+  document.querySelector("#randomEventType").textContent = window.grid.evtype;
 
   const tbody = document.querySelector("#unit-table-body");
 
@@ -52,9 +59,6 @@ function render() {
           cell.textContent = unit[key];
           row.appendChild(cell);
         }
-        // const content =
-        //   key === "distance" ?  : unit[key];
-        // cell.innerText = content;
       });
     tbody.appendChild(row);
   });

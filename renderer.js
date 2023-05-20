@@ -1,5 +1,19 @@
 let filter = "available";
 
+const RENDERERS = {
+  status: (unit, row) => {
+    const cell = document.createElement("td");
+    cell.innerText = unit.status;
+    row.classList.add(unit.status);
+    row.appendChild(cell);
+  },
+  distance: (unit, row) => {
+    const cell = document.createElement("td");
+    cell.innerText = unit.distance.toFixed(1) + " km";
+    row.appendChild(cell);
+  },
+};
+
 function handleFilterChange(e) {
   filter = e.target.value;
 
@@ -30,10 +44,17 @@ function render() {
       .filter((key) => key !== "d_group")
       .forEach((key) => {
         const cell = document.createElement("td");
-        const content =
-          key === "distance" ? unit[key].toFixed(1) + " km" : unit[key];
-        cell.innerText = content;
-        row.appendChild(cell);
+
+        if (RENDERERS[key]) {
+          RENDERERS[key](unit, row);
+        } else {
+          let cell = document.createElement("td");
+          cell.textContent = unit[key];
+          row.appendChild(cell);
+        }
+        // const content =
+        //   key === "distance" ?  : unit[key];
+        // cell.innerText = content;
       });
     tbody.appendChild(row);
   });

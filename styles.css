@@ -26,7 +26,6 @@ td:nth-child(4) {
 table {
   border-collapse: collapse;
   text-align: center;
-  color: blue;
 }
 
 th,
@@ -43,4 +42,33 @@ ul {
 
 body {
   font-family: Sans-Serif;
+}
+
+.AS,
+.AM {
+  color: blue;
+}
+
+.AR {
+  color: red;
+}
+
+.ER {
+  color: purple;
+}
+
+.E2 {
+  color: hotpink;
+}
+
+.DP {
+  color: green;
+}
+
+.LD {
+  color: orange;
+}
+
+.AD {
+  color: black;
 }

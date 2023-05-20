@@ -20,9 +20,14 @@ const RENDERERS = {
   }
 };
 
+function resetFilter() {
+  document.getElementById("all").checked = false;
+  document.getElementById("available").checked = true;
+  filter = "available";
+}
+
 function handleFilterChange(e) {
   filter = e.target.value;
-
   render();
 }
 

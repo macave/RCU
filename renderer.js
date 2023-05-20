@@ -20,13 +20,19 @@ function render() {
     });
   }
 
-  units.slice(0, 10).map((unit) => {
+  const limited_units = units.splice(0, 9);
+
+  limited_units.push(units.find((unit) => unit.unit_type === "MICA"));
+
+  limited_units.map((unit) => {
     const row = document.createElement("tr");
     Object.keys(unit)
       .filter((key) => key !== "d_group")
       .forEach((key) => {
         const cell = document.createElement("td");
-        cell.innerText = unit[key];
+        const content =
+          key === "distance" ? unit[key].toFixed(1) + " km" : unit[key];
+        cell.innerText = content;
         row.appendChild(cell);
       });
     tbody.appendChild(row);

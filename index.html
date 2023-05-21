@@ -81,7 +81,7 @@
 							<th style="width: 15%">Type</th>
 							<th style="width: 40%">DW</th>
 							<th style="width: 15%">Status</th>
-							<th style="width: 10%">Distance</th>	
+							<th style="width: 10%">Distance</th>
 						</tr>
 					</thead>
 					<tbody id="unit-table-body">
@@ -119,22 +119,24 @@
 			</div>
 
 			<div class="row d-flex flex-row justify-content-center">
-				<select id="fleetAvailability" style="width:10%; background-color: #abddff;" class="form-select form-select-sm">
-					<option value="1" selected>Fleet Availability</option>
-					<option value="0.6">60% Fleet</option>
-					<option value="0.2">20% Fleet</option>
-					<option value="0.05">5% Fleet</option>
+				<select id="fleetAvailability" style="width:10%; background-color: #abddff;"
+					class="form-select form-select-sm">
+					<option value="0.5" selected>Normal Fleet Availability</option>
+					<option value="0.3">Low Fleet Availability</option>
+					<option value="0.15">Code Orange</option>
+					<option value="0.05">Code Red</option>
 				</select>
-				<select id="useComplexDW" style="width: 10%; background-color: #abddff;" class="form-select form-select-sm ms-2">
+				<select id="useComplexDW" style="width: 10%; background-color: #abddff;"
+					class="form-select form-select-sm ms-2">
 					<option value="0" selected>Simple DW</option>
 					<option value="1">Complex DW</option>
 				</select>
-				<button onclick="toggleEvRemarks()" class="btn btn-sm ms-2" style="width: 10%; background-color: #abddff;">Toggle Remarks</button>	
-			</div>	
-			<div class="row">
-				<p class="text-center">Please report any issues/Requests to Marcus - Happy Studying :)</p>
+				<button onclick="toggleEvRemarks()" class="btn btn-sm ms-2"
+					style="width: 10%; background-color: #abddff;">Toggle Remarks</button>
+			</div>
+			<div class="row d-flex">
+				<a style="text-align: right" class="mb-2 me-2" href="./about.html">About RCU Study Tool</a>
 			</div>
 		</div>
 </body>
-
 </html>

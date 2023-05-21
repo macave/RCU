@@ -3,11 +3,15 @@ const UNIT_COUNT = 300;
 const DW_OPTIONS = [
   "CODE 1",
   "PRI 0",
+  "*CODE 1",
+  "*PRI 0",
 ];
+
 const DW_COMPLEX_OPTIONS = [
   "NO STRETCHER",
   "S/O",
   "1700/1900",
+  "MDTN",
 ]
 
 const STATUS_OPTIONS = ["AM", "AS", "ER", "E2", "AR", "DP", "LD", "AD"];

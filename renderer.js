@@ -23,12 +23,18 @@ const RENDERERS = {
 function resetFilter() {  
   document.getElementById("all").checked = false;
   document.getElementById("available").checked = true;
+  //Only allow one dispatch vallidation
+  document.getElementById("all").disabled = false;
+  document.getElementById("available").disabled = false;
   filter = "available";
 }
 
 function handleFilterChange(e) {
   filter = e.target.value;
   render();
+  //Only allow one dispatch vallidation
+  document.getElementById("all").disabled = true;
+  document.getElementById("available").disabled = true;
 }
 
 function render() {

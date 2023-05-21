@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="mt-5 ms-5">
+        <h2>
+            About RCU Study Tool
+        </h2>
+        <p>I created this study tool to help me practice interpreting the resposne grid and selecting appropirate units
+            to
+            dispatch. I hope it helps you develop your skills!</p>
+        <h4>
+            How to use:
+        </h4>
+        <p>
+            To generate a new RCU string & Event click the 'NEW EVENT' button or click the 'Enter' key.
+        </p>
+        <p>
+            Selecting 'Toggle Remarks' at the bottom of the page will toggle a remarks panel on the right side of the
+            screen. This can be used to practice post disptach referals Eg. >20km,Closer car priority 0, Backup
+            solution, etc.
+        </p>
+        <p style="font-weight: bold">
+            There are customisation options at the bottom of the page that allow you to change how RCU strings are
+            generated:
+        </p>
+        <ul>
+            <li>Fleet Availability: Changing this will alter the percentage of units that have a C1/P0 DW applied to
+                them
+            </li>
+            <li>DW Options: Simple DW (Applies C1/P0 warnings to Units), Complex DW (Simple DW + 'No Stretcher', 'S/O',
+                etc.)</li>
+        </ul>
+        <h4>
+            Known Limitations
+        </h4>
+        <ul>
+            <li>You can only Dispatch Validate once and you are not ab le to return to use all units</li>
+            <li>Dispatch warnings are applied randomly - this may mean at times MICA Response Units and ARUs will be
+                applied S/O or No Stretcher warnings</li>
+            <li>Pseudo unit referals in the response grid (Clin, Goodsam, DM, AAV) will not appear at the bottom of the RCU string - hopefully this will be fixed soon :) </li>
+        </ul>
+        <nav>
+            <a class="fs-5" style="font-weight: bold" href="./index.html">Return to RCU Generator</a>
+        </nav>
+    </div>
+</body>
+
+</html>

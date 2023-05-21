@@ -14,7 +14,7 @@ const DW_COMPLEX_OPTIONS = [
   "MDTN",
 ]
 
-const STATUS_OPTIONS = ["AM", "AS", "ER", "E2", "AR", "DP", "LD", "AD"];
+const STATUS_OPTIONS = ["AM", "AS", "ER", "E2", "AR", "DP", "LD", "AD", "AM", "AS", "E2", "AR","AD"];
 
 
 function generateUnits() {
@@ -44,7 +44,7 @@ function generateUnits() {
     base_unit.status =
       STATUS_OPTIONS[Math.floor(Math.random() * STATUS_OPTIONS.length)];
 
-    base_unit.distance = Math.floor(Math.random() * 400) / 10;
+    base_unit.distance = Math.floor(Math.random() * 1000) / 10;
 
     generated_units.push(base_unit);
   }

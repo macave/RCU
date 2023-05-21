@@ -24,8 +24,8 @@ function resetFilter() {
   document.getElementById("all").checked = false;
   document.getElementById("available").checked = true;
   //Only allow one dispatch vallidation
-  document.getElementById("all").disabled = false;
-  document.getElementById("available").disabled = false;
+  //document.getElementById("all").disabled = false;
+  //document.getElementById("available").disabled = false;
   filter = "available";
 }
 
@@ -33,8 +33,8 @@ function handleFilterChange(e) {
   filter = e.target.value;
   render();
   //Only allow one dispatch vallidation
-  document.getElementById("all").disabled = true;
-  document.getElementById("available").disabled = true;
+  //document.getElementById("all").disabled = true;
+  //document.getElementById("available").disabled = true;
 }
 
 function render() {
@@ -46,7 +46,7 @@ function render() {
 
   tbody.innerHTML = "";
 
-  let units = window.units;
+  let units = [...window.units];
   if (filter == "available") {
     units = units.filter((unit) => {
       return ["AS", "AM"].includes(unit.status);

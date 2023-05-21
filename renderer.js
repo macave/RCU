@@ -5,6 +5,7 @@ let extraAGP = 5;
 let extraMATS = 5;
 let extraALL = 5;
 
+
 const RENDERERS = {
   status: (unit, row) => {
     const cell = document.createElement("td");

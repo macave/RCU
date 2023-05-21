@@ -35,11 +35,3 @@ function refDmNNU() {
 function clearAll() {
   document.getElementById("comment-list").innerHTML = "";
 }
-
-//Save RCU String
-function saveRCUString(){
-  html2canvas(document.querySelector("#RCUString")).then(canvas => {
-        return Canvas2Image.saveAsPNG(canvas,canvas.width,canvas.height,"Practice_RCU_String");
-      }
-  );
-}

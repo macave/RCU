@@ -83,6 +83,7 @@ const suburbs = [
     "KENSINGTON",
     "DOCKLANDS"    
 ]
+let EventNumber = "";
 
 function generateEventDetails() {
     let CAD = "";
@@ -93,6 +94,16 @@ function generateEventDetails() {
         CAD = "J23";
         var randomCADNumber = Math.floor(Math.random() * (71001 - 70001 + 1)) + 71001;
     };
-    document.querySelector("#CADNumber").textContent = CAD + months[[Math.floor(Math.random() * months.length)]] + days[[Math.floor(Math.random() * days.length)]] + randomCADNumber;
+
+    EventNumber = CAD + months[[Math.floor(Math.random() * months.length)]] + days[[Math.floor(Math.random() * days.length)]] + randomCADNumber;
+    document.querySelector("#CADNumber").textContent = EventNumber;
     document.querySelector("#EventAddress").textContent = Math.floor(Math.random() * (114 - 11 + 1)) + 114 + " " + streets[[Math.floor(Math.random() * streets.length)]] + ", " + suburbs[[Math.floor(Math.random() * suburbs.length)]];
 }
+
+//Save RCU String
+function saveRCUString(){
+    html2canvas(document.querySelector("#RCUString")).then(canvas => {
+          return Canvas2Image.saveAsPNG(canvas,canvas.width,canvas.height,"Practice_RCU_String_"+ EventNumber);
+        }
+    );
+  }

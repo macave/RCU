@@ -1,5 +1,9 @@
 let filter = "available";
+
 let extraMICA = 5;
+let extraAGP = 5;
+let extraMATS = 5;
+let extraALL = 5;
 
 const RENDERERS = {
   status: (unit, row) => {
@@ -24,20 +28,15 @@ const RENDERERS = {
 function resetFilter() {
   document.getElementById("all").checked = false;
   document.getElementById("available").checked = true;
-  //Only allow one dispatch vallidation
-  //document.getElementById("all").disabled = false;
-  //document.getElementById("available").disabled = false;
   filter = "available";
 }
 
 function handleFilterChange(e) {
   filter = e.target.value;
   render();
-  //Only allow one dispatch vallidation
-  //document.getElementById("all").disabled = true;
-  //document.getElementById("available").disabled = true;
 }
 
+//Master Render
 function render() {
   document.querySelector("#randomGrid").textContent = window.grid.grid;
   document.querySelector("#randomEventType").textContent = window.grid.evtype;
@@ -77,20 +76,26 @@ function render() {
   });
 }
 
-/*Add ALL units
-function addAllUnits() {
-  const tbody = document.querySelector("#unit-table-body");
-  tbody.innerHTML = "";
+//Add additional MICA Units
+function addMICAUnits() {
 
+  const tbody = document.querySelector("#unit-table-body");
+  extraMICA = extraMICA + 5;
   let units = [...window.units];
+
   if (filter == "available") {
     units = units.filter((unit) => {
       return ["AS", "AM"].includes(unit.status);
     });
   }
-
-  const limited_units = units.splice(0, 14);
-  limited_units.push(units.find((unit) => unit.unit_type === "MICA"));
+  //Remove the 10 units that have already been shown
+  units.splice(0, 15);
+  //Filter by unit type
+  units = units.filter((unit) => {
+    return ["MICA"].includes(unit.unit_type);
+  });
+  units.splice(0, extraMICA);
+  const limited_units = units.splice(0, 5);
 
   limited_units.map((unit) => {
     const row = document.createElement("tr");
@@ -109,13 +114,12 @@ function addAllUnits() {
       });
     tbody.appendChild(row);
   });
-}*/
+}
 
-//Add MICA Units
-function addMICAUnits() {
-
+//Add additional AGP Units
+function addAGPUnits() {
   const tbody = document.querySelector("#unit-table-body");
-  extraMICA = extraMICA + 5;
+  extraAGP = extraAGP + 5;
 
   let units = [...window.units];
 
@@ -125,13 +129,94 @@ function addMICAUnits() {
       return ["AS", "AM"].includes(unit.status);
     });
   }
-
+  //Remove the 10 units that have already been shown
   units.splice(0, 15);
-
+  //Filter by unit type
   units = units.filter((unit) => {
-    return ["MICA"].includes(unit.unit_type);
+    return ["AGP"].includes(unit.unit_type);
   });
-  units.splice(0, extraMICA);
+  units.splice(0, extraAGP);
+  const limited_units = units.splice(0, 5);
+
+  limited_units.map((unit) => {
+    const row = document.createElement("tr");
+    Object.keys(unit)
+      .filter((key) => key !== "d_group")
+      .forEach((key) => {
+        const cell = document.createElement("td");
+
+        if (RENDERERS[key]) {
+          RENDERERS[key](unit, row);
+        } else {
+          let cell = document.createElement("td");
+          cell.textContent = unit[key];
+          row.appendChild(cell);
+        }
+      });
+    tbody.appendChild(row);
+  });
+}
+
+//Add additional MATS Units
+function addMATUnits() {
+  const tbody = document.querySelector("#unit-table-body");
+  extraMATS = extraMATS + 5;
+
+  let units = [...window.units];
+
+  if (filter == "available") {
+    units = units.filter((unit) => {
+      return ["AS", "AM"].includes(unit.status);
+    });
+  }
+  //Remove the 10 units that have already been shown
+  units.splice(0, 10);
+
+  //Filter by unit type
+  units = units.filter((unit) => {
+    return ["MATS"].includes(unit.unit_type);
+  });
+
+  const limited_units = units.splice(0, 5);
+
+  limited_units.map((unit) => {
+    const row = document.createElement("tr");
+    Object.keys(unit)
+      .filter((key) => key !== "d_group")
+      .forEach((key) => {
+        const cell = document.createElement("td");
+
+        if (RENDERERS[key]) {
+          RENDERERS[key](unit, row);
+        } else {
+          let cell = document.createElement("td");
+          cell.textContent = unit[key];
+          row.appendChild(cell);
+        }
+      });
+    tbody.appendChild(row);
+  });
+}
+
+//Add additional ALL Units
+function addALLUnits() {
+  const tbody = document.querySelector("#unit-table-body");
+  extraALL = extraALL + 5;
+
+  let units = [...window.units];
+
+  if (filter == "available") {
+    units = units.filter((unit) => {
+      return ["AS", "AM"].includes(unit.status);
+    });
+  }
+  //Remove the 10 units that have already been shown
+  units.splice(0, 15);
+  //Filter by unit type
+  units = units.filter((unit) => {
+    return ["AGP","ARU","MICA","MBR","MATS"].includes(unit.unit_type);
+  });
+  units.splice(0, extraALL);
   const limited_units = units.splice(0, 5);
 
   limited_units.map((unit) => {

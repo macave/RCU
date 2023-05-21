@@ -43,7 +43,7 @@ function generateUnits() {
     base_unit.status =
       STATUS_OPTIONS[Math.floor(Math.random() * STATUS_OPTIONS.length)];
 
-    base_unit.distance = Math.floor(Math.random() * 1000) / 10;
+    base_unit.distance = Math.floor(Math.random() * 1500) / 10;
 
     generated_units.push(base_unit);
   }

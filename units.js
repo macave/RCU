@@ -1,4 +1,4 @@
-const UNIT_COUNT = 300;
+const UNIT_COUNT = 316;
 
 const DW_OPTIONS = [
   "CODE 1",
@@ -14,16 +14,15 @@ const DW_COMPLEX_OPTIONS = [
   "MDTN",
 ]
 
-const STATUS_OPTIONS = ["AM", "AS", "ER", "E2", "AR", "DP", "LD", "AD", "AM", "AS", "E2", "AR","AD"];
+const STATUS_OPTIONS = ["AM", "AS", "ER", "E2", "AR", "DP", "LD", "AD", "AM", "AS", "E2", "AR", "AD"];
 
 
 function generateUnits() {
   const units_dup = [...UNIT_DATA];
   const generated_units = [];
-
+  console.log(UNIT_DATA.length);
   let fleet_availability = document.getElementById("fleetAvailability").value;
   let complexDW = document.getElementById("useComplexDW").value;
-  console.log(complexDW);
 
   for (let index = 0; index < UNIT_COUNT; index++) {
     const base_unit = units_dup.splice(

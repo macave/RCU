@@ -52,6 +52,7 @@ function render() {
     units = units.filter((unit) => {
       return ["AS", "AM"].includes(unit.status);
     });
+    
   }
 
   const limited_units = units.splice(0, 9);
@@ -75,6 +76,9 @@ function render() {
       });
     tbody.appendChild(row);
   });
+
+//document.getElementById(unitTable).insertCell.innerHTML = "Test";
+
 }
 
 //Add additional MICA Units

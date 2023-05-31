@@ -28,7 +28,6 @@ const STATUS_OPTIONS = ["AM", "AS", "ER", "E2", "AR", "DP", "LD", "AD", "AM", "A
 function generateUnits() {
   const units_dup = [...UNIT_DATA];
   const generated_units = [];
-  console.log(UNIT_DATA.length);
   let fleet_availability = document.getElementById("fleetAvailability").value;
   let complexDW = document.getElementById("useComplexDW").value;
 

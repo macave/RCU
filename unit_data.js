@@ -1166,7 +1166,7 @@ const UNIT_DATA = [
   },
   {
     unit_pneumonic: "AR101",
-    unit_type: "AGP",
+    unit_type: "ARU",
     d_group: "WEST",
   },
   {
@@ -1176,7 +1176,7 @@ const UNIT_DATA = [
   },
   {
     unit_pneumonic: "AR108",
-    unit_type: "AGP",
+    unit_type: "ARU",
     d_group: "WEST",
   },
   {
@@ -1186,7 +1186,7 @@ const UNIT_DATA = [
   },
   {
     unit_pneumonic: "AR110",
-    unit_type: "AGP",
+    unit_type: "ARU",
     d_group: "WEST",
   },
   {

@@ -10,8 +10,16 @@ const DW_OPTIONS = [
 const DW_COMPLEX_OPTIONS = [
   "NO STRETCHER",
   "S/O",
-  "1700/1900",
+  "1700/1900F",
   "MDTN",
+  "=14=",
+  "1700F",
+]
+
+const DW_COMPLEX_OPTIONS_Z_SO = [
+  "MDTN",
+  "=14=",
+  "1700F",
 ]
 
 const STATUS_OPTIONS = ["AM", "AS", "ER", "E2", "AR", "DP", "LD", "AD", "AM", "AS", "E2", "AR", "AD"];
@@ -36,8 +44,14 @@ function generateUnits() {
         : "";
 
     if (complexDW == 1) {
-      base_unit.dw = base_unit.dw + " " +
-        (Math.random() > 0.5 ? DW_COMPLEX_OPTIONS[Math.floor(Math.random() * DW_COMPLEX_OPTIONS.length)] : "");
+      if (base_unit.unit_type === 'MICA' || base_unit.unit_type === "ARU") {
+        //Select random DW from MICA / S/O DWs
+        base_unit.dw = base_unit.dw + " " +
+          (Math.random() > 0.5 ? DW_COMPLEX_OPTIONS_Z_SO[Math.floor(Math.random() * DW_COMPLEX_OPTIONS_Z_SO.length)] : "");
+      } else {
+        base_unit.dw = base_unit.dw + " " +
+          (Math.random() > 0.5 ? DW_COMPLEX_OPTIONS[Math.floor(Math.random() * DW_COMPLEX_OPTIONS.length)] : "");
+      }
     }
 
     base_unit.status =

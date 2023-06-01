@@ -673,7 +673,7 @@ const GRID_DATA = [
     },
     {
        evtype:"17D1",
-       evdescriptor:"AP      FALLS: EXTREME FALL (� 10M/30FT)",
+       evdescriptor:"AP      FALLS: EXTREME FALL (> 10M/30FT)",
        grid:"AP/PR1,NO,H:MC1,AP2",
        notification:"H"
     },

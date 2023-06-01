@@ -12,6 +12,7 @@
 	<script src="grid_data.js"></script>
 	<script src="units.js"></script>
 	<script src="remarks.js"></script>
+	<script src="settings.js"></script>
 	<script src="eventDetails.js"></script>
 	<script src="html2canvas.min.js"></script>
 	<script src="canvas2image.js"></script>
@@ -51,6 +52,27 @@
 </script>
 
 <body>
+
+	<!-- Settings Pannel -->
+	<div id="menu" class="hidden">
+		<h1>Settings</h1>
+		<div class="row d-flex flex-row justify-content-center">
+			<select id="fleetAvailability" class="options">
+				<option value="0.5" selected>Normal Fleet Availability</option>
+				<option value="0.3">Low Fleet Availability</option>
+				<option value="0.15">Code Orange</option>
+				<option value="0.05">Code Red</option>
+			</select>
+			<select id="useComplexDW" class="options">
+				<option value="0" selected>Simple DW</option>
+				<option value="1">Complex DW</option>
+			</select>
+			<button onclick="toggleEvRemarks()" class="options">Toggle
+				Remarks</button>
+			<a id="hideSettigns" href="#" onclick="CloseSettings();return false;">Close Settings</a>
+		</div>
+	</div>
+
 	<div class="container">
 		<div class="row pt-4">
 			<div id="RCUString" class="col border border-2 border-opacity-50 border-black">
@@ -156,37 +178,23 @@
 					<ul class="mt-2" id="comment-list"></ul>
 				</div>
 			</div>
-			<div class="row" style="margin-bottom: 10%;">
+			<div class="row" style="margin-bottom: 5%;">
 
 			</div>
 		</div>
+
+
 
 		<div class="fixed-bottom" style="background-color: rgb(255, 255, 255);">
 			<div class="d-flex justify-content-center mb-2">
 				<button onclick="initTool()" style="width:20%" class="btn btn-info">NEW EVENT</button>
 				<!--<button onclick="addAllUnits()" style="width:20%" class="btn btn-info">ADD ALL</button>-->
-			</div>
-			<div class="row d-flex flex-row justify-content-center">
-				<select id="fleetAvailability" style="width:10%; background-color: #abddff;"
-					class="form-select form-select-sm">
-					<option value="0.5" selected>Normal Fleet Availability</option>
-					<option value="0.3">Low Fleet Availability</option>
-					<option value="0.15">Code Orange</option>
-					<option value="0.05">Code Red</option>
-				</select>
-				<select id="useComplexDW" style="width: 10%; background-color: #abddff;"
-					class="form-select form-select-sm ms-2">
-					<option value="0" selected>Simple DW</option>
-					<option value="1">Complex DW</option>
-				</select>
-				<button onclick="toggleEvRemarks()" class="btn btn-sm ms-2"
-					style="width: 10%; background-color: #abddff;">Toggle Remarks</button>
 				<button onclick="saveRCUString()" class="btn btn-sm ms-2"
 					style="width: 10%; background-color: #abddff;">Save RCU String</button>
 			</div>
-			<div style="text-align: right" class="row d-flex">
-				<a class="mb-2 me-2" href="./about.html">About RCU Study Tool</a>
+			<div style="text-align: right" class="d-flex ms-3 mb-2">
+				<a class="me-3" href="./about.html">About</a>
+				<a id="openSettigns" href="#" onclick="OpenSettings();return false;">Open Settings</a>
 			</div>
-		</div>
 </body>
 </html>

@@ -28,8 +28,9 @@ const STATUS_OPTIONS = ["AM", "AS", "ER", "E2", "AR", "DP", "LD", "AD", "AM", "A
 function generateUnits() {
   const units_dup = [...UNIT_DATA];
   const generated_units = [];
-  let fleet_availability = document.getElementById("fleetAvailability").value;
-  let complexDW = document.getElementById("useComplexDW").value;
+
+  let fleet_availability = localStorage.getItem("fleetAvailability");
+  let complexDW = localStorage.getItem("complexDW");
 
   for (let index = 0; index < UNIT_COUNT; index++) {
     const base_unit = units_dup.splice(

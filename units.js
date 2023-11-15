@@ -29,9 +29,6 @@ function generateUnits() {
   const units_dup = [...UNIT_DATA];
   const generated_units = [];
 
-  let fleet_availability = 1;
-  let complexDW = 0;
-
   let fleet_availability = localStorage.getItem("fleetAvailability");
   let complexDW = localStorage.getItem("complexDW");
 
